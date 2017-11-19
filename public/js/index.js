@@ -1,10 +1,19 @@
 //open up websocket
 var socket = io();
 
-            socket.on('connect', function () {
-                console.log('Connected to server');
-            });
+socket.on('connect', function () {
+    console.log('Connected to server');
 
-            socket.on('disconnect', function () {
-                console.log('Disconnected from server');
-            });
+    socket.emit('createMessage', {
+        from: 'Jacq',
+        test: 'hey'
+    })
+});
+
+socket.on('disconnect', function () {
+    console.log('Disconnected from server');
+});
+
+socket.on('newMessage', function (message) {
+    console.log('New message', message);
+});
