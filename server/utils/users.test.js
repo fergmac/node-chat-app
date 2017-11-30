@@ -1,9 +1,8 @@
 const expect = require('expect');
-const {Users} = require('./users');
+const { Users } = require('./users');
 
 describe('Users', () => {
-
-    var users;
+    const users;
 
     beforeEach(() => {
         users = new Users();
