@@ -1,16 +1,16 @@
-//open up websocket
-var socket = io();
+// open up websocket
+const socket = io();
 
-function scrollToBottom () {
+function scrollToBottom() {
     // selectors
-    var messages = jQuery('#messages');
-    var newMessage = messages.children('li:last-child')
+    const messages = jQuery('#messages');
+    const newMessage = messages.children('li:last-child')
     // heights
-    var clientHeight = messages.prop('clientHeight');
-    var scrollTop = messages.prop('scrollTop');
-    var scrollHeight = messages.prop('scrollHeight');
-    var newMessageHeight = newMessage.innerHeight();
-    var lastMessageHeight = newMessage.prev().innerHeight();
+    const clientHeight = messages.prop('clientHeight');
+    const scrollTop = messages.prop('scrollTop');
+    const scrollHeight = messages.prop('scrollHeight');
+    const newMessageHeight = newMessage.innerHeight();
+    const lastMessageHeight = newMessage.prev().innerHeight();
 
     if (clientHeight + scrollTop + newMessageHeight + lastMessageHeight  >= scrollHeight) {
         messages.scrollTop(scrollHeight);
@@ -18,7 +18,7 @@ function scrollToBottom () {
 }
 
 socket.on('connect', function () {
-    var params = jQuery.deparam(window.location.search);
+    const params = jQuery.deparam(window.location.search);
 
     socket.emit('join', params, function (err) {
         if (err) {
@@ -81,7 +81,7 @@ jQuery('#message-form').on('submit', function (e) {
     }); 
 });
 
-var locationButton = jQuery('#send-location');
+const locationButton = jQuery('#send-location');
 locationButton.on('click', function () {
     if (!navigator.geolocation) {
         return alert('Geolocation not supported by your browser');
